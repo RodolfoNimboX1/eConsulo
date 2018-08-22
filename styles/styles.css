@@ -50,6 +50,11 @@
 /* HOME */
     section {
         overflow: scroll;
+        display: block;
+        width: 91%;
+        height: 62%;
+        position: fixed;    
+        top: 35%;
     }
 
     #enavbar {
@@ -61,5 +66,92 @@
         height: 5px;
         background-color: white;
         margin: 6px 0;
+    }
+
+    /* Nav Bar */
+    .sideNav {
+        height: 100%; 
+        width: 0; 
+        position: fixed; 
+        z-index: 1; 
+        top: 0; 
+        left: 0;
+        background-color: #e2e3e5;
+        overflow-x: hidden;
+        padding-top: 60px;
+        transition: 0.5s;
+    }
+
+    .sideNav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #383d41;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sideNav a:hover {
+        color: #dc3545;
+    }
+ 
+    .sideNav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 25px;
+        margin-left: 50px;
+    }
+
+    #search-bar {
+        padding: 5%;
+    }
+
+    #nav-icons {
+        padding-right: 5%;
+    }
+
+    .btn-group {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    figure {
+        padding: 5%;
+        width: 100%;
+        height: 115px;
+        background: #cce5ff;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #383d41
+    }
+
+    #profile-icon {
+        font-size: 45px;
+        color: #383d41;
+        float: left;
+        padding-right: 3%;
+    }
+
+    .identification {
+        font-size: 11px;
+        color: #383d41;
+        float: left;
+    }
+
+    .description {
+        color: #383d41;
+        width: 43%;
+        font-size: 11px;
+        text-align: justify;
+        float: right;
+        clear: right;
+    }
+
+    .price {
+        font-weight: bold;
+        font-size: 14px;
+        color: #383d41;
+        float: right;
     }
 }
