@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Categories eConsulo</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="sideNav">
+            <a href="#" class="closebtn">&times;</a>
+            <a href="#"><i class="fas fa-user-circle" id="nav-icons"></i>Profile</a>
+            <a href="/index"><i class="fas fa-graduation-cap" id="nav-icons"></i>Mentoring</a>
+            <a href="/categories"><i class="fas fa-chalkboard-teacher" id="nav-icons"></i>Categories</a>
+    </div>
+        <!--Nav Bar-->
+        <nav class="navbar navbar-light bg-light" id="enavbar">
+            <a class="openNav">
+                    <div class="burger-menu"></div>
+                    <div class="burger-menu"></div>
+                    <div class="burger-menu"></div>
+            </a>
+
+                <a class="navbar-brand" href="#">
+                  <img src="styles/logo_econsulo.png" alt="eConsulo">
+                </a>
+        </nav>
+              
+        <!--Jobs To Be Done-->
+        <div class="container">
+            <div class="row" id="categories">
+                <div class="col" id="col-one">
+                    <!-- Example figure -->
+                    <!-- <figure class="cat-label">
+                        <i class="fas fa-american-sign-language-interpreting" id="cat-icon"></i>
+                        <h6>Sign Language</h6>
+                    </figure> -->
+                </div>
+
+                <div class="col" id="col-two">
+                    <!-- Example figure -->
+                    <!-- <figure class="cat-label">
+                            <i class="fas fa-briefcase-medical" id="cat-icon"></i>
+                            <h6>First Aid</h6>
+                    </figure> -->
+                </div>
+              </div>
+        </div>
+
+        </div>
+
+        <!--Java Script-->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <!--Side Nav Bar Event Handler-->
+        <script>
+
+
+            $(".openNav").on("click", function() {
+                $(".sideNav").css("width", "+=200")
+            });
+
+            $(".closebtn").on("click", function() {
+                $(".sideNav").css("width", "0")
+            });
+
+// API Call
+displayCat();
+
+
+function displayCat() {
+    var query = "http://dev.outputcc.com/econsulows/api/getCategories"
+
+    $.ajax({
+        url: query,
+        method: "POST",
+    }).then(function(res) {
+        console.log(query);
+        console.log(res);
+
+        var categories = res.data;
+        console.log(categories);
+
+// Column One
+        for (var i=0; i<3; i++) {
+            var figureDiv = $("<figure>").addClass("cat-label");
+            figureDiv.attr("id", categories[i].Id);
+            $("#col-one").append(figureDiv);
+            var image = $("<img>").attr("src", categories[i].imgURL);
+            image.attr("id", "cat-icon")
+            figureDiv.append(image);
+            var name = $("<h6>").text(categories[i].Name);
+            figureDiv.append(name);
+        }
+// Column Two
+        for (var i=4; i<categories.length; i++) {
+            var figureDiv = $("<figure>").addClass("cat-label");
+            figureDiv.attr("id", categories[i].Id);
+            $("#col-two").append(figureDiv);
+            var image = $("<img>").attr("src", categories[i].imgURL);
+            image.attr("id", "cat-icon")
+            figureDiv.append(image);
+            var name = $("<h6>").text(categories[i].Name);
+            figureDiv.append(name);
+        }
+    }); // ajax ends
+}
+        </script>
+</body>
+</html>
