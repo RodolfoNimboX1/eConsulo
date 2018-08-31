@@ -2,6 +2,7 @@
 // ==============================================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+var request = require("request");
 
 // EXPRESS CONFIGURATION
 // ==============================================================================
@@ -19,6 +20,48 @@ app.use(bodyParser.json());
 // ================================================================================
 require("./routing/htmlRoutes")(app);
 app.use(express.static('public'));
+
+app.post("/econsulows/api/VerifyUser", function(req, res){
+
+    var options = { method: 'POST',
+    url: 'http://dev.outputcc.com/econsulows/api/VerifyUser',
+    headers: 
+    {  'Content-Type': 'application/x-www-form-urlencoded' },
+    json: true };
+
+    request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+        res.json(body);
+    });
+});
+
+app.post("/econsulows/api/getMentorias", function(req, res){
+    var options = { method: 'POST',
+    url: 'http://dev.outputcc.com/econsulows/api/getMentorias',
+    headers: 
+    { 'Content-Type': 'application/x-www-form-urlencoded' },
+    json: true  };
+
+    request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+        res.json(body);
+        console.log(body);
+    });
+});
+
+app.post("/econsulows/api/getCategories", function(req, res){
+    var options = { method: 'POST',
+    url: 'http://dev.outputcc.com/econsulows/api/getCategories',
+    headers: 
+    { 'Content-Type': 'application/x-www-form-urlencoded' },
+    json: true  };
+
+    request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+        res.json(body);
+        console.log(body);
+    });
+});
 
 // LISTENER
 // =============================================================================

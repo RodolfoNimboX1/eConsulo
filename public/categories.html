@@ -74,7 +74,7 @@ displayCat();
 
 
 function displayCat() {
-    var query = "http://dev.outputcc.com/econsulows/api/getCategories"
+    var query = "/econsulows/api/getCategories"
 
     $.ajax({
         url: query,
@@ -83,18 +83,19 @@ function displayCat() {
         console.log(query);
         console.log(res);
 
-        var categories = res.data;
+        var categories = res;
         console.log(categories);
 
 // Column One
-        for (var i=0; i<3; i++) {
+        for (var i=0; i<4; i++) {
             var figureDiv = $("<figure>").addClass("cat-label");
             figureDiv.attr("id", categories[i].Id);
             $("#col-one").append(figureDiv);
-            var image = $("<img>").attr("src", categories[i].imgURL);
+            var image = $("<img>").attr("src", "./img/rodolfo.jpg");
             image.attr("id", "cat-icon")
             figureDiv.append(image);
-            var name = $("<h6>").text(categories[i].Name);
+            var name = $("<p>").text(categories[i].Name);
+            name.attr("id", "cat-name")
             figureDiv.append(name);
         }
 // Column Two
@@ -102,10 +103,11 @@ function displayCat() {
             var figureDiv = $("<figure>").addClass("cat-label");
             figureDiv.attr("id", categories[i].Id);
             $("#col-two").append(figureDiv);
-            var image = $("<img>").attr("src", categories[i].imgURL);
+            var image = $("<img>").attr("src", "./img/rodolfo.jpg");
             image.attr("id", "cat-icon")
             figureDiv.append(image);
-            var name = $("<h6>").text(categories[i].Name);
+            var name = $("<p>").text(categories[i].Name);
+            name.attr("id", "cat-name")
             figureDiv.append(name);
         }
     }); // ajax ends

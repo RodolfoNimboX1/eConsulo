@@ -88,7 +88,7 @@ $( document ).ready(function() {
 });
 
 function renderMentors() {
-        var query = "http://dev.outputcc.com/econsulows/api/getMentorias"
+        var query = "/econsulows/api/getMentorias"
 
 $.ajax({
     url: query,
@@ -97,21 +97,29 @@ $.ajax({
         console.log(query);
         console.log(res);
 
-        var mentors = res.data;
+        var mentors = res;
         console.log(mentors);
 
         // render element
         for (var i=0; i<mentors.length; i++) {
+                var br= ("<br>");
                 var figure = $("<figure>").addClass("mentors");
                 $("section").append(figure);
                 var div = $("<div>");
                 figure.append(div);
                 //img goes here and append to div
+                var img = $("<img>").attr("src", "./img/rodolfo.jpg");
+                img.attr("id", "profile-icon");
+                div.append(img);
+                // Mentor title
                 var title = $("<p>").text(mentors[i].Title);
-                title.addClass("identification");
+                title.addClass("title");
+                title.append(br);
                 div.append(title);
+                //Mentor Name
                 var name = $("<p>").text(mentors[i].MentorName);
                 name.addClass("identification");
+                name.append(br);
                 title.append(name);
                 //rating goes here and append to name
                 if (mentors[i].Rating === "1") {
@@ -193,10 +201,12 @@ $.ajax({
                         star5.attr("id", "no-star");
                         anchor.append(star5);
                 }
+                //Mentoring description
                 var description = $("<p>").text(mentors[i].Description);
                 description.addClass("description");
                 div.append(description);
-                var price = $("<a>").text(mentors[i].Price);
+                //Price
+                var price = $("<a>").text("$"+mentors[i].Price);
                 price.addClass("price");
                 description.append(price);
         }

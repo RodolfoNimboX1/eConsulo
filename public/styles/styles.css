@@ -130,25 +130,44 @@
     }
 
     #profile-icon {
-        font-size: 45px;
         color: #383d41;
         float: left;
-        padding-right: 3%;
+        margin-top: -2%;
+        margin-left: -4%;
+        height: 5.63%;
+        width: 30%;
+        padding-right: 1%;
     }
 
     .identification {
         font-size: 11px;
         color: #383d41;
         float: left;
+        width: 50%;
+    }
+
+    .title {
+        font-size: 11px;
+        color: #383d41;
+        float: left;
+        width: 50%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .description {
         color: #383d41;
-        width: 43%;
+        width: 45%;
+        height: 6%;
+        overflow: hidden;
         font-size: 11px;
         text-align: justify;
         float: right;
-        clear: right;
+        margin-top: -30%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .price {
@@ -156,6 +175,7 @@
         font-size: 14px;
         color: #383d41;
         float: right;
+        margin-top: 10%;
     }
 
     /* CATEGORIES */
@@ -172,15 +192,17 @@
     }
 
     #cat-icon {
-        font-size: 60px;
-        margin-left: 25%;
-        margin-top: 18%;
+        height: 70%;
+        width: 70%;
+        margin-left: 15%;
+        margin-top: 7%;
         color: #007bff;
     }
 
-    h6 {
+    #cat-name {
         color: #218838 !important;
-        margin-top: 5% !important;
+        margin-top: 2% !important;
         text-align: center;
+        font-size: 70%;
     }
 }
