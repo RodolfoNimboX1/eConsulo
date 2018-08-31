@@ -36,33 +36,12 @@
                 </div>
 
                 <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-success">By Qualification</button>
-                        <button type="button" class="btn btn-primary">By Price</button>
+                        <button type="button" class="btn btn-success" onclick="byQualification();">By Qualification</button>
+                        <button type="button" class="btn btn-primary" id="price" onclick="byPrice();">By Price</button>
+                        <button type="button" class="btn btn-info" id="restore" onclick="renderMentors();">Restore</button>
                 </div>
             <section>
-                <!-- Example figure -->
-                    <!-- <figure class="mentors">
-                        <div>
-                            <i class="fas fa-user-md" id="profile-icon"></i>
 
-                            <p class="identification">Title of the consulting<br>
-                                Juanchito Perez<br>
-                                <a>
-                                        <i class="fas fa-star" id="good-star"></i>
-                                        <i class="fas fa-star" id="good-star"></i>
-                                        <i class="fas fa-star" id="good-star"></i>
-                                        <i class="far fa-star" id="no-star"></i>
-                                        <i class="far fa-star" id="no-star"></i>
-                                </a>
-                            </p>
-
-                                    <p class="description">
-                                            Lorem ipsum dolor sit amet consectetur adipiscing elit dictum. 
-                                            Nulla quam.<br>
-                                            <a class="price">$150</a>
-                                    </p>
-                        </div>
-                    </figure> -->
             </section>
 
         </div>
@@ -88,6 +67,7 @@ $( document ).ready(function() {
 });
 
 function renderMentors() {
+        $("section").empty();
         var query = "/econsulows/api/getMentorias"
 
 $.ajax({
@@ -102,35 +82,41 @@ $.ajax({
 
         // render element
         for (var i=0; i<mentors.length; i++) {
-                var br= ("<br>");
                 var figure = $("<figure>").addClass("mentors");
                 $("section").append(figure);
-                var div = $("<div>");
+                var div = $("<div>").addClass("row");
                 figure.append(div);
-                //img goes here and append to div
+                // image column
+                var colImg = $("<div>").addClass("col");
+                div.append(colImg);
+                // identification column
+                var colId = $("<div>").addClass("col");
+                div.append(colId);
+                // description column
+                var colDes = $("<div>").addClass("col");
+                div.append(colDes);
+                // add imag
                 var img = $("<img>").attr("src", "./img/rodolfo.jpg");
                 img.attr("id", "profile-icon");
-                div.append(img);
-                // Mentor title
+                colImg.append(img);
+                // Mentor Title
                 var title = $("<p>").text(mentors[i].Title);
                 title.addClass("title");
-                title.append(br);
-                div.append(title);
-                //Mentor Name
+                colId.append(title);
+                // Mentor Name
                 var name = $("<p>").text(mentors[i].MentorName);
                 name.addClass("identification");
-                name.append(br);
                 title.append(name);
-                //rating goes here and append to name
+                // Mentor Rating
                 if (mentors[i].Rating === "1") {
                         var anchor = $("<a>");
-                        name.append(anchor);
+                        title.append(anchor);
                         var star = $("<i>").addClass("fas fa-star");
                         star.attr("id", "good-star");
                         anchor.append(star);
                 } else if (mentors[i].Rating === "2") {
                         var anchor = $("<a>");
-                        name.append(anchor); 
+                        title.append(anchor); 
                         var star = $("<i>").addClass("fas fa-star");
                         star.attr("id", "good-star");
                         anchor.append(star);
@@ -139,7 +125,7 @@ $.ajax({
                         anchor.append(star2); 
                 } else if (mentors[i].Rating === "3") {
                         var anchor = $("<a>");
-                        name.append(anchor); 
+                        title.append(anchor); 
                         var star = $("<i>").addClass("fas fa-star");
                         star.attr("id", "good-star");
                         anchor.append(star);
@@ -151,7 +137,7 @@ $.ajax({
                         anchor.append(star3);
                 } else if (mentors[i].Rating === "4") {
                         var anchor = $("<a>");
-                        name.append(anchor); 
+                        title.append(anchor); 
                         var star = $("<i>").addClass("fas fa-star");
                         star.attr("id", "good-star");
                         anchor.append(star);
@@ -166,7 +152,7 @@ $.ajax({
                         anchor.append(star4);
                 } else if (mentors[i].Rating === "5") {
                         var anchor = $("<a>");
-                        name.append(anchor); 
+                        title.append(anchor); 
                         var star = $("<i>").addClass("fas fa-star");
                         star.attr("id", "good-star");
                         anchor.append(star);
@@ -184,7 +170,7 @@ $.ajax({
                         anchor.append(star5);
                 } else {
                         var anchor = $("<a>");
-                        name.append(anchor); 
+                        title.append(anchor); 
                         var star = $("<i>").addClass("fas fa-star");
                         star.attr("id", "no-star");
                         anchor.append(star);
@@ -201,14 +187,235 @@ $.ajax({
                         star5.attr("id", "no-star");
                         anchor.append(star5);
                 }
-                //Mentoring description
+                // description
                 var description = $("<p>").text(mentors[i].Description);
                 description.addClass("description");
-                div.append(description);
+                colDes.append(description);
                 //Price
                 var price = $("<a>").text("$"+mentors[i].Price);
                 price.addClass("price");
-                description.append(price);
+                colDes.append(price);
+        }
+}); //ajax ends
+}
+
+function byQualification() {
+        console.log("click");
+        $("section").empty();
+        var query = "/econsulows/api/getMentorias"
+
+$.ajax({
+    url: query,
+    method: "POST"
+}).then(function(res) {
+        var mentors = res;
+                // render element
+                for (var i=0; i<mentors.length; i++) {
+                        if( mentors[i].Rating > 3) {
+                                var figure = $("<figure>").addClass("mentors");
+                $("section").append(figure);
+                var div = $("<div>").addClass("row");
+                figure.append(div);
+                // image column
+                var colImg = $("<div>").addClass("col");
+                div.append(colImg);
+                // identification column
+                var colId = $("<div>").addClass("col");
+                div.append(colId);
+                // description column
+                var colDes = $("<div>").addClass("col");
+                div.append(colDes);
+                // add imag
+                var img = $("<img>").attr("src", "./img/rodolfo.jpg");
+                img.attr("id", "profile-icon");
+                colImg.append(img);
+                // Mentor Title
+                var title = $("<p>").text(mentors[i].Title);
+                title.addClass("title");
+                colId.append(title);
+                // Mentor Name
+                var name = $("<p>").text(mentors[i].MentorName);
+                name.addClass("identification");
+                title.append(name);
+                // Mentor Rating
+                if (mentors[i].Rating === "4") {
+                        var anchor = $("<a>");
+                        title.append(anchor); 
+                        var star = $("<i>").addClass("fas fa-star");
+                        star.attr("id", "good-star");
+                        anchor.append(star);
+                        var star2 = $("<i>").addClass("fas fa-star");
+                        star2.attr("id", "good-star");
+                        anchor.append(star2); 
+                        var star3 = $("<i>").addClass("fas fa-star");
+                        star3.attr("id", "good-star");
+                        anchor.append(star3);
+                        var star4 = $("<i>").addClass("fas fa-star");
+                        star4.attr("id", "good-star");
+                        anchor.append(star4);
+                } else if (mentors[i].Rating === "5") {
+                        var anchor = $("<a>");
+                        title.append(anchor); 
+                        var star = $("<i>").addClass("fas fa-star");
+                        star.attr("id", "good-star");
+                        anchor.append(star);
+                        var star2 = $("<i>").addClass("fas fa-star");
+                        star2.attr("id", "good-star");
+                        anchor.append(star2); 
+                        var star3 = $("<i>").addClass("fas fa-star");
+                        star3.attr("id", "good-star");
+                        anchor.append(star3);
+                        var star4 = $("<i>").addClass("fas fa-star");
+                        star4.attr("id", "good-star");
+                        anchor.append(star4);
+                        var star5 = $("<i>").addClass("fas fa-star");
+                        star5.attr("id", "good-star");
+                        anchor.append(star5);
+                }
+                // description
+                var description = $("<p>").text(mentors[i].Description);
+                description.addClass("description");
+                colDes.append(description);
+                //Price
+                var price = $("<a>").text("$"+mentors[i].Price);
+                price.addClass("price");
+                colDes.append(price);
+                        }
+        }
+}); //ajax ends
+}
+
+function byPrice() {
+        console.log("click");
+        $("section").empty();
+        var query = "/econsulows/api/getMentorias"
+        $.ajax({
+    url: query,
+    method: "POST"
+}).then(function(res) {
+        console.log(query);
+        console.log(res);
+
+        var mentors = res;
+        console.log(mentors);
+
+        // render element
+        for (var i=0; i<mentors.length; i++) {
+                if( mentors[i].Price !== "500" && mentors[i].Price !== "1000") {
+                        var figure = $("<figure>").addClass("mentors");
+                $("section").append(figure);
+                var div = $("<div>").addClass("row");
+                figure.append(div);
+                // image column
+                var colImg = $("<div>").addClass("col");
+                div.append(colImg);
+                // identification column
+                var colId = $("<div>").addClass("col");
+                div.append(colId);
+                // description column
+                var colDes = $("<div>").addClass("col");
+                div.append(colDes);
+                // add imag
+                var img = $("<img>").attr("src", "./img/rodolfo.jpg");
+                img.attr("id", "profile-icon");
+                colImg.append(img);
+                // Mentor Title
+                var title = $("<p>").text(mentors[i].Title);
+                title.addClass("title");
+                colId.append(title);
+                // Mentor Name
+                var name = $("<p>").text(mentors[i].MentorName);
+                name.addClass("identification");
+                title.append(name);
+                // Mentor Rating
+                if (mentors[i].Rating === "1") {
+                        var anchor = $("<a>");
+                        title.append(anchor);
+                        var star = $("<i>").addClass("fas fa-star");
+                        star.attr("id", "good-star");
+                        anchor.append(star);
+                } else if (mentors[i].Rating === "2") {
+                        var anchor = $("<a>");
+                        title.append(anchor); 
+                        var star = $("<i>").addClass("fas fa-star");
+                        star.attr("id", "good-star");
+                        anchor.append(star);
+                        var star2 = $("<i>").addClass("fas fa-star");
+                        star2.attr("id", "good-star");
+                        anchor.append(star2); 
+                } else if (mentors[i].Rating === "3") {
+                        var anchor = $("<a>");
+                        title.append(anchor); 
+                        var star = $("<i>").addClass("fas fa-star");
+                        star.attr("id", "good-star");
+                        anchor.append(star);
+                        var star2 = $("<i>").addClass("fas fa-star");
+                        star2.attr("id", "good-star");
+                        anchor.append(star2); 
+                        var star3 = $("<i>").addClass("fas fa-star");
+                        star3.attr("id", "good-star");
+                        anchor.append(star3);
+                } else if (mentors[i].Rating === "4") {
+                        var anchor = $("<a>");
+                        title.append(anchor); 
+                        var star = $("<i>").addClass("fas fa-star");
+                        star.attr("id", "good-star");
+                        anchor.append(star);
+                        var star2 = $("<i>").addClass("fas fa-star");
+                        star2.attr("id", "good-star");
+                        anchor.append(star2); 
+                        var star3 = $("<i>").addClass("fas fa-star");
+                        star3.attr("id", "good-star");
+                        anchor.append(star3);
+                        var star4 = $("<i>").addClass("fas fa-star");
+                        star4.attr("id", "good-star");
+                        anchor.append(star4);
+                } else if (mentors[i].Rating === "5") {
+                        var anchor = $("<a>");
+                        title.append(anchor); 
+                        var star = $("<i>").addClass("fas fa-star");
+                        star.attr("id", "good-star");
+                        anchor.append(star);
+                        var star2 = $("<i>").addClass("fas fa-star");
+                        star2.attr("id", "good-star");
+                        anchor.append(star2); 
+                        var star3 = $("<i>").addClass("fas fa-star");
+                        star3.attr("id", "good-star");
+                        anchor.append(star3);
+                        var star4 = $("<i>").addClass("fas fa-star");
+                        star4.attr("id", "good-star");
+                        anchor.append(star4);
+                        var star5 = $("<i>").addClass("fas fa-star");
+                        star5.attr("id", "good-star");
+                        anchor.append(star5);
+                } else {
+                        var anchor = $("<a>");
+                        title.append(anchor); 
+                        var star = $("<i>").addClass("fas fa-star");
+                        star.attr("id", "no-star");
+                        anchor.append(star);
+                        var star2 = $("<i>").addClass("fas fa-star");
+                        star2.attr("id", "no-star");
+                        anchor.append(star2); 
+                        var star3 = $("<i>").addClass("fas fa-star");
+                        star3.attr("id", "no-star");
+                        anchor.append(star3);
+                        var star4 = $("<i>").addClass("fas fa-star");
+                        star4.attr("id", "no-star");
+                        anchor.append(star4);
+                        var star5 = $("<i>").addClass("fas fa-star");
+                        star5.attr("id", "no-star");
+                        anchor.append(star5);
+                }
+                // description
+                var description = $("<p>").text(mentors[i].Description);
+                description.addClass("description");
+                colDes.append(description);
+                //Price
+                var price = $("<a>").text("$"+mentors[i].Price);
+                price.addClass("price");
+                colDes.append(price);
+                }
         }
 }); //ajax ends
 }
