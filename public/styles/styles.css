@@ -119,6 +119,7 @@
         padding-right: 5%;
     }
 
+    /* MENTORS */
     .mentors {
         padding: 5%;
         width: 100%;
@@ -150,6 +151,10 @@
 
     .fa-star {
         font-size: 30%;
+    }
+
+    #button-search{
+        background: #383d41 !important;
     }
 
     .description {

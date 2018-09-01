@@ -32,6 +32,9 @@
               <!--Jobs To Be Done-->
         <div class="container">
                 <div class="input-group mb-3" id="search-bar">
+                                <div class="input-group-prepend">
+                                        <button class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
+                                </div>
                         <input type="text" class="form-control" placeholder="What would you like to know?" id="search-topic">
                 </div>
 
@@ -199,8 +202,7 @@ $.ajax({
 }); //ajax ends
 };
 
-$("#search-topic").keypress(function(e) {
-    if(e.which == 13) {
+$("#button-search").on("click", function() {
         console.log('Searching topic...');
         var topic = $("#search-topic").val().trim();
         console.log(topic);
@@ -337,7 +339,6 @@ $("#search-topic").keypress(function(e) {
                 }
         }
 }); //ajax ends        
-    }
 });
 
 function byQualification() {
