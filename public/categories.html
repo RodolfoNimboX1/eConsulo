@@ -83,8 +83,32 @@ function displayCat() {
             var figureDiv = $("<figure>").addClass("cat-label");
             figureDiv.attr("id", categories[i].Id);
             $("#col-one").append(figureDiv);
-            var image = $("<img>").attr("src", "./img/rodolfo.jpg");
-            image.attr("id", "cat-icon")
+            var image = $("<img>");
+            if (categories[i].Name === "Deporte y Salud") {
+                image.attr("src", "./img/DS.png");
+                image.attr("id", "cat-icon");
+            } else if (categories[i].Name === "Arte, Arquitectura y Diseño") {
+                image.attr("src", "./img/AAD.png");
+                image.attr("id", "cat-icon");
+            } else if (categories[i].Name === "Países") {
+                image.attr("src", "./img/Paises.png");
+                image.attr("id", "cat-icon");
+            } else if (categories[i].Name === "Vida") {
+                image.attr("src", "./img/Vida.png");
+                image.attr("id", "cat-icon");   
+            } else if (categories[i].Name === "Educación") {
+                image.attr("src", "./img/Educacion.png");
+                image.attr("id", "cat-icon");     
+            } else if (categories[i].Name === "Empleo y Negocios") {
+                image.attr("src", "./img/EN.png");
+                image.attr("id", "cat-icon");  
+            } else if (categories[i].Name === "Global") {
+                image.attr("src", "./img/Global.png");
+                image.attr("id", "cat-icon"); 
+            } else {
+                image.attr("src", "./img/DIY.png");
+                image.attr("id", "cat-icon"); 
+            }            
             figureDiv.append(image);
             var name = $("<p>").text(categories[i].Name);
             name.attr("id", "cat-name")
@@ -95,8 +119,32 @@ function displayCat() {
             var figureDiv = $("<figure>").addClass("cat-label");
             figureDiv.attr("id", categories[i].Id);
             $("#col-two").append(figureDiv);
-            var image = $("<img>").attr("src", "./img/rodolfo.jpg");
-            image.attr("id", "cat-icon")
+            var image = $("<img>");
+            if (categories[i].Name === "Deporte y Salud") {
+                image.attr("src", "./img/DS.png");
+                image.attr("id", "cat-icon");
+            } else if (categories[i].Name === "Arte, Arquitectura y Diseño") {
+                image.attr("src", "./img/AAD.png");
+                image.attr("id", "cat-icon");
+            } else if (categories[i].Name === "Países") {
+                image.attr("src", "./img/Paises.png");
+                image.attr("id", "cat-icon");
+            } else if (categories[i].Name === "Vida") {
+                image.attr("src", "./img/Vida.png");
+                image.attr("id", "cat-icon");   
+            } else if (categories[i].Name === "Educación") {
+                image.attr("src", "./img/Educacion.png");
+                image.attr("id", "cat-icon");     
+            } else if (categories[i].Name === "Empleo y Negocios") {
+                image.attr("src", "./img/EN.png");
+                image.attr("id", "cat-icon");  
+            } else if (categories[i].Name === "Global") {
+                image.attr("src", "./img/Global.png");
+                image.attr("id", "cat-icon"); 
+            } else {
+                image.attr("src", "./img/DIY.png");
+                image.attr("id", "cat-icon"); 
+            }
             figureDiv.append(image);
             var name = $("<p>").text(categories[i].Name);
             name.attr("id", "cat-name")

@@ -53,10 +53,12 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-        <!--Side Nav Bar Event Handler-->
         <script>
 $( document ).ready(function() {
+                    // API Call
+                    renderMentors();
+
+// Side Nav Bar Event Handler
             $(".openNav").on("click", function() {
                 $(".sideNav").css("width", "+=200")
             });
@@ -65,8 +67,6 @@ $( document ).ready(function() {
                 $(".sideNav").css("width", "0")
             });
 
-            // API Call
-            renderMentors();
 });
 
 function renderMentors() {
@@ -99,7 +99,7 @@ $.ajax({
                 var colDes = $("<div>").addClass("col");
                 div.append(colDes);
                 // add imag
-                var img = $("<img>").attr("src", "./img/rodolfo.jpg");
+                var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" +mentors[i].URLImage);
                 img.attr("id", "profile-icon");
                 colImg.append(img);
                 // Mentor Title
@@ -206,7 +206,6 @@ $("#button-search").on("click", function() {
         console.log('Searching topic...');
         var topic = $("#search-topic").val().trim();
         console.log(topic);
-
         $("section").empty();
         var query = "/econsulows/api/getMentorias"
         $.ajax({
@@ -237,7 +236,7 @@ $("#button-search").on("click", function() {
                 var colDes = $("<div>").addClass("col");
                 div.append(colDes);
                 // add imag
-                var img = $("<img>").attr("src", "./img/rodolfo.jpg");
+                var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_70/" +mentors[i].URLImage);
                 img.attr("id", "profile-icon");
                 colImg.append(img);
                 // Mentor Title
@@ -368,7 +367,7 @@ $.ajax({
                 var colDes = $("<div>").addClass("col");
                 div.append(colDes);
                 // add imag
-                var img = $("<img>").attr("src", "./img/rodolfo.jpg");
+                var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_70/" +mentors[i].URLImage);
                 img.attr("id", "profile-icon");
                 colImg.append(img);
                 // Mentor Title
@@ -458,7 +457,7 @@ function byPrice() {
                 var colDes = $("<div>").addClass("col");
                 div.append(colDes);
                 // add imag
-                var img = $("<img>").attr("src", "./img/rodolfo.jpg");
+                var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_70/" +mentors[i].URLImage);
                 img.attr("id", "profile-icon");
                 colImg.append(img);
                 // Mentor Title

@@ -132,8 +132,6 @@
 
     #profile-icon {
         color: #383d41;
-        height: 95px;
-        width: 100%;
     }
 
     .title {
@@ -155,6 +153,7 @@
 
     #button-search{
         background: #383d41 !important;
+        z-index: 0;
     }
 
     .description {
