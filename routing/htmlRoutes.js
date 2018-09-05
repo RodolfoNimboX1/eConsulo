@@ -18,4 +18,9 @@ app.get("/categories", function(req, response) {
     response.sendFile(path.join(__dirname, "../public/categories.html"));
 });
 
+// GET Route to /profile which display's the categories page.
+app.get("/profile", function(req, response) {
+    response.sendFile(path.join(__dirname, "../public/profile.html"));
+});
+
 }

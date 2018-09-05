@@ -31,8 +31,8 @@ app.post("/econsulows/api/VerifyUser", function(req, res){
 
     request(options, function (error, response, body) {
     if (error) throw new Error(error);
-    console.log(response);
     console.log("lol");
+    console.log(body);
         res.json(body);
     });
 });

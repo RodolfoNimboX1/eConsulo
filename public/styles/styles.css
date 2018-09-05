@@ -204,4 +204,28 @@
         text-align: center;
         font-size: 70%;
     }
+
+    /* PROFILE */
+    .profile-img {
+        width: 60%;
+        height: 60%;
+        position: relative;
+        left: 20%;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+    .name {
+        padding: 5%;
+    }
+
+    #name {
+        background: #17a2b8;
+    }
+
+    #phone {
+        background: #17a2b8;
+    }
 }
