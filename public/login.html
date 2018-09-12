@@ -50,21 +50,36 @@
                 event.preventDefault();
                 if(($('#email-login').val().trim()) !== "" && ($('#psswd-login').val().trim() !== "")) {
                         var email = $('#email-login').val().trim();
+                        var password = $("#psswd-login").val().trim();
 
                 if (!isValidEmailAddress(email)) {
                                 alert("Please enter a valid email");
                 } else {
                         console.log("valid email");
                 }
-                var query = "/econsulows/api/VerifyUser";
+
                 var userData = {
-                        email: $('#email-login').val().trim(),
-                        password: $('#psswd-login').val().trim()
+                        "email": $('#email-login').val().trim(),
+                        "password": $('#psswd-login').val().trim()
                 }
                 // AJAX post the data to the API.
-                $.post(query, userData, function(data) {
-                        console.log("mega lol")
-                        console.log(data);
+                $.ajax({
+                type: "POST",
+                url: 'http://dev.outputcc.com/econsulows/api/VerifyUser',
+                contentType: "application/x-www-form-urlencoded",
+                data: userData,
+                dataType: "json"
+                }).then(function(res) {
+                        console.log(res);
+                
+                if (res[0].Id === "" && res[0].Active === "") {
+                        console.log("not a user")
+                        alert("Couldn't find a user with that email. Please create your account!");
+                } else {
+                        console.log(res[0].Id);
+                        console.log(res[0].Active);
+                        $(location).attr('href', '/mentoring');
+                }
                 });
                 } else {
                         alert("Please add all the fields!");

@@ -99,9 +99,15 @@ $.ajax({
                 var colDes = $("<div>").addClass("col");
                 div.append(colDes);
                 // add imag
+                if (mentors[i].URLImage === "") {
+                var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" + "l_text:Montserrat_11_bold_center:" + mentors[i].Title + ",g_west,x_10" + "/smart_postal_header_color.png");
+                img.attr("id", "profile-icon");
+                colImg.append(img);    
+                } else {
                 var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" +mentors[i].URLImage);
                 img.attr("id", "profile-icon");
                 colImg.append(img);
+                }
                 // Mentor Title
                 var title = $("<p>").text(mentors[i].Title);
                 title.addClass("title");
