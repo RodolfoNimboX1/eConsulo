@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mentoring eConsulo</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Mentoring eConsulo</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
+
 <body>
-    <div class="sideNav">
-            <a href="#" class="closebtn">&times;</a>
-            <a href="/profile"><i class="fas fa-user-circle" id="nav-icons"></i>Profile</a>
-            <a href="/mentoring"><i class="fas fa-graduation-cap" id="nav-icons"></i>Mentoring</a>
-            <a href="/categories"><i class="fas fa-chalkboard-teacher" id="nav-icons"></i>Categories</a>
-    </div>
+        <div class="sideNav">
+                <a href="#" class="closebtn">&times;</a>
+                <a href="/profile"><i class="fas fa-user-circle" id="nav-icons"></i>Profile</a>
+                <a href="/mentoring"><i class="fas fa-graduation-cap" id="nav-icons"></i>Mentoring</a>
+                <a href="/categories"><i class="fas fa-chalkboard-teacher" id="nav-icons"></i>Categories</a>
+        </div>
         <!--Nav Bar-->
         <nav class="navbar navbar-light bg-light" id="enavbar">
-            <a class="openNav">
-                    <div class="burger-menu"></div>
-                    <div class="burger-menu"></div>
-                    <div class="burger-menu"></div>
-            </a>
+                <a class="openNav">
+                        <div class="burger-menu"></div>
+                        <div class="burger-menu"></div>
+                        <div class="burger-menu"></div>
+                </a>
 
                 <a class="navbar-brand" href="#">
-                  <img src="styles/logo_econsulo.png" alt="eConsulo">
+                        <img src="styles/logo_econsulo.png" alt="eConsulo">
                 </a>
         </nav>
 
-              <!--Jobs To Be Done-->
+        <!--Jobs To Be Done-->
         <div class="container">
                 <div class="input-group mb-3" id="search-bar">
-                                <div class="input-group-prepend">
-                                        <button class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
-                                </div>
+                        <div class="input-group-prepend">
+                                <button class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
+                        </div>
                         <input type="text" class="form-control" placeholder="What would you like to know?" id="search-topic">
                 </div>
 
@@ -43,9 +45,9 @@
                         <button type="button" class="btn btn-primary" id="price" onclick="byPrice();">By Price</button>
                         <button type="button" class="btn btn-info" id="restore" onclick="renderMentors();">Restore</button>
                 </div>
-            <section>
-
-            </section>
+                <section class="mentoring">
+                        
+                </section>
 
         </div>
 
@@ -53,519 +55,873 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <!--Datepicker-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
         <script>
-$( document ).ready(function() {
-                    // API Call
-                    renderMentors();
+                $(document).ready(function () {
+                        // API Call
+                        renderMentors();
 
-// Side Nav Bar Event Handler
-            $(".openNav").on("click", function() {
-                $(".sideNav").css("width", "+=200")
-            });
+                        // Side Nav Bar Event Handler
+                        $(".openNav").on("click", function () {
+                                $(".sideNav").css("width", "+=200")
+                        });
 
-            $(".closebtn").on("click", function() {
-                $(".sideNav").css("width", "0")
-            });
+                        $(".closebtn").on("click", function () {
+                                $(".sideNav").css("width", "0")
+                        });
+                });
 
-});
+                function mentoryId(mentorId) {
+                        var query = "/econsulows/api/getMentorias"
+                        // logic to select id and load the speficic mentor page
+                        console.log("recibi: " + mentorId);
+                        $.ajax({
+                                url: query,
+                                data: "id="+mentorId,
+                                method: "POST"
+                        }).then(function(res) {
+                        console.log(mentorId);
+                        var chosenId = mentorId.toString();
+                        console.log(chosenId);
+                        console.log(res);
 
-function renderMentors() {
-        $("section").empty();
-        var query = "/econsulows/api/getMentorias"
-
-$.ajax({
-    url: query,
-    method: "POST"
-}).then(function(res) {
-        console.log(query);
-        console.log(res);
-
-        var mentors = res;
-        console.log(mentors);
-
-        // render element
-        for (var i=0; i<mentors.length; i++) {
-                var figure = $("<figure>").addClass("mentors");
-                $("section").append(figure);
-                var div = $("<div>").addClass("row");
-                figure.append(div);
-                // image column
-                var colImg = $("<div>").addClass("col");
-                div.append(colImg);
-                // identification column
-                var colId = $("<div>").addClass("col");
-                div.append(colId);
-                // description column
-                var colDes = $("<div>").addClass("col");
-                div.append(colDes);
-                // add imag
-                if (mentors[i].URLImage === "") {
-                var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" + "l_text:Montserrat_11_bold_center:" + mentors[i].Title + ",g_west,x_10" + "/smart_postal_header_color.png");
-                img.attr("id", "profile-icon");
-                colImg.append(img);    
-                } else {
-                var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" +mentors[i].URLImage);
-                img.attr("id", "profile-icon");
-                colImg.append(img);
-                }
-                // Mentor Title
-                var title = $("<p>").text(mentors[i].Title);
-                title.addClass("title");
-                colId.append(title);
-                // Mentor Name
-                var name = $("<p>").text(mentors[i].MentorName);
-                name.addClass("identification");
-                title.append(name);
-                // Mentor Rating
-                if (mentors[i].Rating === "1") {
-                        var anchor = $("<a>");
-                        title.append(anchor);
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                } else if (mentors[i].Rating === "2") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                } else if (mentors[i].Rating === "3") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "good-star");
-                        anchor.append(star3);
-                } else if (mentors[i].Rating === "4") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "good-star");
-                        anchor.append(star3);
-                        var star4 = $("<i>").addClass("fas fa-star");
-                        star4.attr("id", "good-star");
-                        anchor.append(star4);
-                } else if (mentors[i].Rating === "5") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "good-star");
-                        anchor.append(star3);
-                        var star4 = $("<i>").addClass("fas fa-star");
-                        star4.attr("id", "good-star");
-                        anchor.append(star4);
-                        var star5 = $("<i>").addClass("fas fa-star");
-                        star5.attr("id", "good-star");
-                        anchor.append(star5);
-                } else {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "no-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "no-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "no-star");
-                        anchor.append(star3);
-                        var star4 = $("<i>").addClass("fas fa-star");
-                        star4.attr("id", "no-star");
-                        anchor.append(star4);
-                        var star5 = $("<i>").addClass("fas fa-star");
-                        star5.attr("id", "no-star");
-                        anchor.append(star5);
-                }
-                // description
-                var description = $("<p>").text(mentors[i].Description);
-                description.addClass("description");
-                colDes.append(description);
-                //Price
-                var price = $("<a>").text("$"+mentors[i].Price);
-                price.addClass("price");
-                colDes.append(price);
-        }
-}); //ajax ends
-};
-
-$("#button-search").on("click", function() {
-        console.log('Searching topic...');
-        var topic = $("#search-topic").val().trim();
-        console.log(topic);
-        $("section").empty();
-        var query = "/econsulows/api/getMentorias"
-        $.ajax({
-    url: query,
-    method: "POST"
-}).then(function(res) {
-        console.log(query);
-        console.log(res);
-
-        var mentors = res;
-        console.log(mentors);
-
-        // render element
-        for (var i=0; i<mentors.length; i++) {
-                if( topic === mentors[i].Title ) {
-                console.log("success");
-                var figure = $("<figure>").addClass("mentors");
-                $("section").append(figure);
-                var div = $("<div>").addClass("row");
-                figure.append(div);
-                // image column
-                var colImg = $("<div>").addClass("col");
-                div.append(colImg);
-                // identification column
-                var colId = $("<div>").addClass("col");
-                div.append(colId);
-                // description column
-                var colDes = $("<div>").addClass("col");
-                div.append(colDes);
-                // add imag
-                var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_70/" +mentors[i].URLImage);
-                img.attr("id", "profile-icon");
-                colImg.append(img);
-                // Mentor Title
-                var title = $("<p>").text(mentors[i].Title);
-                title.addClass("title");
-                colId.append(title);
-                // Mentor Name
-                var name = $("<p>").text(mentors[i].MentorName);
-                name.addClass("identification");
-                title.append(name);
-                // Mentor Rating
-                if (mentors[i].Rating === "1") {
-                        var anchor = $("<a>");
-                        title.append(anchor);
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                } else if (mentors[i].Rating === "2") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                } else if (mentors[i].Rating === "3") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "good-star");
-                        anchor.append(star3);
-                } else if (mentors[i].Rating === "4") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "good-star");
-                        anchor.append(star3);
-                        var star4 = $("<i>").addClass("fas fa-star");
-                        star4.attr("id", "good-star");
-                        anchor.append(star4);
-                } else if (mentors[i].Rating === "5") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "good-star");
-                        anchor.append(star3);
-                        var star4 = $("<i>").addClass("fas fa-star");
-                        star4.attr("id", "good-star");
-                        anchor.append(star4);
-                        var star5 = $("<i>").addClass("fas fa-star");
-                        star5.attr("id", "good-star");
-                        anchor.append(star5);
-                } else {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "no-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "no-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "no-star");
-                        anchor.append(star3);
-                        var star4 = $("<i>").addClass("fas fa-star");
-                        star4.attr("id", "no-star");
-                        anchor.append(star4);
-                        var star5 = $("<i>").addClass("fas fa-star");
-                        star5.attr("id", "no-star");
-                        anchor.append(star5);
-                }
-                // description
-                var description = $("<p>").text(mentors[i].Description);
-                description.addClass("description");
-                colDes.append(description);
-                //Price
-                var price = $("<a>").text("$"+mentors[i].Price);
-                price.addClass("price");
-                colDes.append(price);
-                }
-        }
-}); //ajax ends        
-});
-
-function byQualification() {
-        console.log("results filtered to 4+ star Mentors");
-        $("section").empty();
-        var query = "/econsulows/api/getMentorias"
-
-$.ajax({
-    url: query,
-    method: "POST"
-}).then(function(res) {
-        var mentors = res;
-                // render element
-                for (var i=0; i<mentors.length; i++) {
-                        if( mentors[i].Rating !== "1" && mentors[i].Rating !== "2" && mentors[i].Rating !== "3") {
-                                var figure = $("<figure>").addClass("mentors");
-                $("section").append(figure);
-                var div = $("<div>").addClass("row");
-                figure.append(div);
-                // image column
-                var colImg = $("<div>").addClass("col");
-                div.append(colImg);
-                // identification column
-                var colId = $("<div>").addClass("col");
-                div.append(colId);
-                // description column
-                var colDes = $("<div>").addClass("col");
-                div.append(colDes);
-                // add imag
-                var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_70/" +mentors[i].URLImage);
-                img.attr("id", "profile-icon");
-                colImg.append(img);
-                // Mentor Title
-                var title = $("<p>").text(mentors[i].Title);
-                title.addClass("title");
-                colId.append(title);
-                // Mentor Name
-                var name = $("<p>").text(mentors[i].MentorName);
-                name.addClass("identification");
-                title.append(name);
-                // Mentor Rating
-                if (mentors[i].Rating === "4") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "good-star");
-                        anchor.append(star3);
-                        var star4 = $("<i>").addClass("fas fa-star");
-                        star4.attr("id", "good-star");
-                        anchor.append(star4);
-                } else {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "good-star");
-                        anchor.append(star3);
-                        var star4 = $("<i>").addClass("fas fa-star");
-                        star4.attr("id", "good-star");
-                        anchor.append(star4);
-                        var star5 = $("<i>").addClass("fas fa-star");
-                        star5.attr("id", "good-star");
-                        anchor.append(star5);
-                }
-                // description
-                var description = $("<p>").text(mentors[i].Description);
-                description.addClass("description");
-                colDes.append(description);
-                //Price
-                var price = $("<a>").text("$"+mentors[i].Price);
-                price.addClass("price");
-                colDes.append(price);
+                        for (var i = 0; i < res.length; i ++) {
+                                console.log(res[i].Id);
+                                if(res[i].Id === chosenId) {
+                                        console.log("match!");
+                                        console.log(res[i].Id);
+                                        console.log(res[i].Title);
+                                        $(".container").empty();
+                                // render mentor details
+                                // avatar
+                                        if (res[i].URLImage === "") {
+                                                var avatar = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_250,w_340/" + "l_text:Montserrat_11_bold_center:" + res[i].Title + ",g_west,x_10" + "/smart_postal_header_color.png");
+                                                avatar.addClass("mentorAvatar");
+                                                avatar.attr("id", res[i].Id);
+                                                $(".container").append(avatar);
+                                        } else {
+                                                var avatar = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_250,w_340/" + res[i].URLImage);
+                                                avatar.addClass("mentorAvatar");
+                                                avatar.attr("id", res[i].Id);
+                                               $(".container").append(avatar);
+                                        }
+                                // Mentor Section
+                                var section = $("<section>").addClass("mentorPage");
+                                $(".container").append(section);
+                                // Mentor details
+                                var consultationTitle = $("<h3>").addClass("titulo-consultoria");
+                                consultationTitle.text(res[i].Title)
+                                section.append(consultationTitle);
+                                var mentorName = $("<h5>").addClass("nombre-mentor");
+                                mentorName.text(res[i].MentorName);
+                                section.append(mentorName);
+                                var mentoringDescription = $("<p>").addClass("mentoring-description");
+                                mentoringDescription.text(res[i].Description);
+                                section.append(mentoringDescription);
+                                // rating
+                                if (res[i].Rating === "1") {
+                                                var anchor = $("<a>");
+                                                section.append(anchor);
+                                                var star = $("<i>").addClass("fas fa-star");
+                                                star.attr("id", "nice-star");
+                                                anchor.append(star);
+                                        } else if (res[i].Rating === "2") {
+                                                var anchor = $("<a>");
+                                                section.append(anchor);
+                                                var star = $("<i>").addClass("fas fa-star");
+                                                star.attr("id", "nice-star");
+                                                anchor.append(star);
+                                                var star2 = $("<i>").addClass("fas fa-star");
+                                                star2.attr("id", "nice-star");
+                                                anchor.append(star2);
+                                        } else if (res[i].Rating === "3") {
+                                                var anchor = $("<a>");
+                                                section.append(anchor);
+                                                var star = $("<i>").addClass("fas fa-star");
+                                                star.attr("id", "nice-star");
+                                                anchor.append(star);
+                                                var star2 = $("<i>").addClass("fas fa-star");
+                                                star2.attr("id", "nice-star");
+                                                anchor.append(star2);
+                                                var star3 = $("<i>").addClass("fas fa-star");
+                                                star3.attr("id", "nice-star");
+                                                anchor.append(star3);
+                                        } else if (res[i].Rating === "4") {
+                                                var anchor = $("<a>");
+                                                section.append(anchor);
+                                                var star = $("<i>").addClass("fas fa-star");
+                                                star.attr("id", "nice-star");
+                                                anchor.append(star);
+                                                var star2 = $("<i>").addClass("fas fa-star");
+                                                star2.attr("id", "nice-star");
+                                                anchor.append(star2);
+                                                var star3 = $("<i>").addClass("fas fa-star");
+                                                star3.attr("id", "nice-star");
+                                                anchor.append(star3);
+                                                var star4 = $("<i>").addClass("fas fa-star");
+                                                star4.attr("id", "nice-star");
+                                                anchor.append(star4);
+                                        } else if (res[i].Rating === "5") {
+                                                var anchor = $("<a>");
+                                                section.append(anchor);
+                                                var star = $("<i>").addClass("fas fa-star");
+                                                star.attr("id", "nice-star");
+                                                anchor.append(star);
+                                                var star2 = $("<i>").addClass("fas fa-star");
+                                                star2.attr("id", "nice-star");
+                                                anchor.append(star2);
+                                                var star3 = $("<i>").addClass("fas fa-star");
+                                                star3.attr("id", "nice-star");
+                                                anchor.append(star3);
+                                                var star4 = $("<i>").addClass("fas fa-star");
+                                                star4.attr("id", "nice-star");
+                                                anchor.append(star4);
+                                                var star5 = $("<i>").addClass("fas fa-star");
+                                                star5.attr("id", "nice-star");
+                                                anchor.append(star5);
+                                        } else {
+                                                var anchor = $("<a>");
+                                                section.append(anchor);
+                                                var star = $("<i>").addClass("fas fa-star");
+                                                star.attr("id", "bad-star");
+                                                anchor.append(star);
+                                                var star2 = $("<i>").addClass("fas fa-star");
+                                                star2.attr("id", "bad-star");
+                                                anchor.append(star2);
+                                                var star3 = $("<i>").addClass("fas fa-star");
+                                                star3.attr("id", "bad-star");
+                                                anchor.append(star3);
+                                                var star4 = $("<i>").addClass("fas fa-star");
+                                                star4.attr("id", "bad-star");
+                                                anchor.append(star4);
+                                                var star5 = $("<i>").addClass("fas fa-star");
+                                                star5.attr("id", "bad-star");
+                                                anchor.append(star5);
+                                        }
+                                // datepicker
+                                var datePicker = $("<div>").addClass("datepicker");
+                                section.append(datePicker);
+                                var form = $("<form>");
+                                form.attr("method", "post");
+                                datePicker.append(form);
+                                var dateInput = $("<div>").addClass("form-group");
+                                form.append(dateInput);
+                                var date = $("<input>").addClass("form-control");
+                                date.attr("id", "date");
+                                date.attr("name", "date");
+                                date.attr("placeholder", "MM/DD/YYY");
+                                date.attr("type", "text");
+                                dateInput.append(date);
+                                var dateForm = $("<div>").addClass("form-group");
+                                form.append(dateForm);
+                                var scrollMenu = $("<div>").addClass("scrollmenu");
+                                scrollMenu.attr("onclick", "saveDate()");
+                                scrollMenu.attr("data-toggle", "modal");
+                                scrollMenu.attr("data-target", "#myModal");
+                                dateForm.append(scrollMenu);
+                                var option1 = $("<option>").attr("href", "#");
+                                option1.text("06:00 AM");
+                                scrollMenu.append(option1);
+                                var option2 = $("<option>").attr("href", "#");
+                                option2.text("07:00 AM");
+                                scrollMenu.append(option2);
+                                var option3 = $("<option>").attr("href", "#");
+                                option3.text("08:00 AM");
+                                scrollMenu.append(option3);
+                                var option4 = $("<option>").attr("href", "#");
+                                option4.text("09:00 AM");
+                                scrollMenu.append(option4);
+                                var option5 = $("<option>").attr("href", "#");
+                                option5.text("10:00 AM");
+                                scrollMenu.append(option5);
+                                var option6 = $("<option>").attr("href", "#");
+                                option6.text("11:00 AM");
+                                scrollMenu.append(option6);
+                                var option7 = $("<option>").attr("href", "#");
+                                option7.text("12:00 PM");
+                                scrollMenu.append(option7);
+                                var option8 = $("<option>").attr("href", "#");
+                                option8.text("01:00 PM");
+                                scrollMenu.append(option8);
+                                var option9 = $("<option>").attr("href", "#");
+                                option9.text("02:00 PM");
+                                scrollMenu.append(option9);
+                                var option10 = $("<option>").attr("href", "#");
+                                option10.text("03:00 PM");
+                                scrollMenu.append(option10);
+                                var option11 = $("<option>").attr("href", "#");
+                                option11.text("04:00 PM");
+                                scrollMenu.append(option11);
+                                var option12 = $("<option>").attr("href", "#");
+                                option12.text("05:00 PM");
+                                scrollMenu.append(option12);
+                                var option13 = $("<option>").attr("href", "#");
+                                option13.text("06:00 PM");
+                                scrollMenu.append(option13);
+                                var option14 = $("<option>").attr("href", "#");
+                                option14.text("07:00 PM");
+                                scrollMenu.append(option14);
+                                var option15 = $("<option>").attr("href", "#");
+                                option15.text("08:00 PM");
+                                scrollMenu.append(option15);
+                                var option16 = $("<option>").attr("href", "#");
+                                option16.text("09:00 PM");
+                                scrollMenu.append(option16);
+                                var option17 = $("<option>").attr("href", "#");
+                                option17.text("10:00 PM");
+                                scrollMenu.append(option17);
+                                var option18 = $("<option>").attr("href", "#");
+                                option18.text("11:00 PM");
+                                scrollMenu.append(option18);
+                                // Modal 
+                                var myModal = $("<div>").addClass("modal fade");
+                                myModal.attr("id", "myModal");
+                                myModal.attr("role", "dialog");
+                                form.append(myModal);
+                                var modalDialog = $("<div>").addClass("modal-dialog");
+                                myModal.append(modalDialog);
+                                var modalContent = $("<div>").addClass("modal-content");
+                                modalDialog.append(modalContent);
+                                var modalHeader = $("<div>").addClass("modal-header");
+                                var btn = $("<button>").addClass("close");
+                                        btn.attr("type", "button");
+                                        btn.attr("data-dismiss", "modal");
+                                        btn.text("&times;");
+                                        modalHeader.append(btn);
+                                var modalTitle = $("<h4>").addClass("modal-title");
+                                        modalTitle.text("Confirmación");
+                                        modalHeader.append(modalTitle);
+                                modalContent.append(modalHeader);
+                                var modalBody = $("<div>").addClass("modal-body");
+                                        var confirm = $("<p>").text("¿Desea confirmar su cita para el 20 de Abril?");
+                                                modalBody.append(confirm);
+                                        modalContent.append(modalBody);
+                                var modalFooter = $("<div>").addClass("modal-footer");
+                                        var btnPrim = $("<button>").addClass("btn btn-primary");
+                                                btnPrim.attr("type", "button");
+                                                btnPrim.attr("data-dismiss", "modal");
+                                                btnPrim.text("Confirmar");
+                                                modalFooter.append(btnPrim);
+                                        var btnSec = $("<button>").addClass("btn btn-secondary");
+                                                btnSec.attr("type", "button");
+                                                btnSec.attr("data-dismiss", "modal");
+                                                btnSec.text("Cancelar");
+                                                modalFooter.append(btnSec);
+                                modalContent.append(modalFooter);
+                                // Card de Mentoring Detailes y About
+                                var cardHolder = $("<div>").addClass("card text-center");
+                                        cardHolder.attr("id", "card-holder");
+                                        section.append(cardHolder);
+                                var cardHeader = $("<div>").addClass("card-header");
+                                        cardHolder.append(cardHeader);
+                                var navTabs = $("<ul>").addClass("nav nav-tabs card-header-tabs");
+                                        cardHeader.append(navTabs);
+                                var temarioLi = $("<li>").addClass("nav-item");
+                                        var temarioText = $("<a>").addClass("nav-link active");
+                                                temarioText.attr("href", "#");
+                                                temarioText.attr("id", "temario");
+                                                temarioText.text("Temario");
+                                                temarioLi.append(temarioText);
+                                        navTabs.append(temarioLi);
+                                var aboutLi = $("<li>").addClass("nav-item");
+                                        var aboutText = $("<a>").addClass("nav-link");
+                                                aboutText.attr("href", "#");
+                                                aboutText.attr("id", "acrca");
+                                                aboutText.text("Acerca");
+                                                aboutLi.append(aboutText);
+                                        navTabs.append(aboutLi);
+                                var cardBody = $("<div>").addClass("card-body");
+                                        cardHolder.append(cardBody);
+                                var cardTitle = $("<h5>").addClass("card-title");
+                                        cardTitle.text("Temas por ver en " + res[i].Title);
+                                        cardBody.append(cardTitle);
+                                        // missing list of Modules
+                                }
                         }
-        }
-}); //ajax ends
-};
-
-function byPrice() {
-        console.log("results filtered by price below $500");
-        $("section").empty();
-        var query = "/econsulows/api/getMentorias"
-        $.ajax({
-    url: query,
-    method: "POST"
-}).then(function(res) {
-        console.log(query);
-        console.log(res);
-
-        var mentors = res;
-        console.log(mentors);
-
-        // render element
-        for (var i=0; i<mentors.length; i++) {
-                if( mentors[i].Price !== "500" && mentors[i].Price !== "1000") {
-                        var figure = $("<figure>").addClass("mentors");
-                $("section").append(figure);
-                var div = $("<div>").addClass("row");
-                figure.append(div);
-                // image column
-                var colImg = $("<div>").addClass("col");
-                div.append(colImg);
-                // identification column
-                var colId = $("<div>").addClass("col");
-                div.append(colId);
-                // description column
-                var colDes = $("<div>").addClass("col");
-                div.append(colDes);
-                // add imag
-                var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_70/" +mentors[i].URLImage);
-                img.attr("id", "profile-icon");
-                colImg.append(img);
-                // Mentor Title
-                var title = $("<p>").text(mentors[i].Title);
-                title.addClass("title");
-                colId.append(title);
-                // Mentor Name
-                var name = $("<p>").text(mentors[i].MentorName);
-                name.addClass("identification");
-                title.append(name);
-                // Mentor Rating
-                if (mentors[i].Rating === "1") {
-                        var anchor = $("<a>");
-                        title.append(anchor);
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                } else if (mentors[i].Rating === "2") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                } else if (mentors[i].Rating === "3") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "good-star");
-                        anchor.append(star3);
-                } else if (mentors[i].Rating === "4") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "good-star");
-                        anchor.append(star3);
-                        var star4 = $("<i>").addClass("fas fa-star");
-                        star4.attr("id", "good-star");
-                        anchor.append(star4);
-                } else if (mentors[i].Rating === "5") {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "good-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "good-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "good-star");
-                        anchor.append(star3);
-                        var star4 = $("<i>").addClass("fas fa-star");
-                        star4.attr("id", "good-star");
-                        anchor.append(star4);
-                        var star5 = $("<i>").addClass("fas fa-star");
-                        star5.attr("id", "good-star");
-                        anchor.append(star5);
-                } else {
-                        var anchor = $("<a>");
-                        title.append(anchor); 
-                        var star = $("<i>").addClass("fas fa-star");
-                        star.attr("id", "no-star");
-                        anchor.append(star);
-                        var star2 = $("<i>").addClass("fas fa-star");
-                        star2.attr("id", "no-star");
-                        anchor.append(star2); 
-                        var star3 = $("<i>").addClass("fas fa-star");
-                        star3.attr("id", "no-star");
-                        anchor.append(star3);
-                        var star4 = $("<i>").addClass("fas fa-star");
-                        star4.attr("id", "no-star");
-                        anchor.append(star4);
-                        var star5 = $("<i>").addClass("fas fa-star");
-                        star5.attr("id", "no-star");
-                        anchor.append(star5);
+                        }); //ajax ends
                 }
-                // description
-                var description = $("<p>").text(mentors[i].Description);
-                description.addClass("description");
-                colDes.append(description);
-                //Price
-                var price = $("<a>").text("$"+mentors[i].Price);
-                price.addClass("price");
-                colDes.append(price);
-                }
-        }
-}); //ajax ends
-};
+
+                function renderMentors() {
+                        $("section").empty();
+                        var query = "/econsulows/api/getMentorias"
+
+                        $.ajax({
+                                url: query,
+                                method: "POST"
+                        }).then(function (res) {
+                                console.log(query);
+                                console.log(res);
+
+                                var mentors = res;
+                                console.log(mentors);
+
+                                // render element
+                                for (var i = 0; i < mentors.length; i++) {
+                                        var figure = $("<figure>").addClass("mentors");
+                                        figure.attr("id", mentors[i].Id);
+                                        figure.attr("onClick", "mentoryId("+mentors[i].Id+");");
+                                        $("section").append(figure);
+                                        var div = $("<div>").addClass("row");
+                                        figure.append(div);
+                                        // image column
+                                        var colImg = $("<div>").addClass("col");
+                                        div.append(colImg);
+                                        // identification column
+                                        var colId = $("<div>").addClass("col");
+                                        div.append(colId);
+                                        // description column
+                                        var colDes = $("<div>").addClass("col");
+                                        div.append(colDes);
+                                        // add imag
+                                        if (mentors[i].URLImage === "") {
+                                                var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" + "l_text:Montserrat_11_bold_center:" + mentors[i].Title + ",g_west,x_10" + "/smart_postal_header_color.png");
+                                                img.attr("id", "profile-icon");
+                                                colImg.append(img);
+                                        } else {
+                                                var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" + mentors[i].URLImage);
+                                                img.attr("id", "profile-icon");
+                                                colImg.append(img);
+                                        }
+                                        // Mentor Title
+                                        var title = $("<p>").text(mentors[i].Title);
+                                        title.addClass("title");
+                                        colId.append(title);
+                                        // Mentor Name
+                                        var name = $("<p>").text(mentors[i].MentorName);
+                                        name.addClass("identification");
+                                        title.append(name);
+                                        // Mentor Rating
+                                        if (mentors[i].Rating === "1") {
+                                                var anchor = $("<a>");
+                                                title.append(anchor);
+                                                var star = $("<i>").addClass("fas fa-star");
+                                                star.attr("id", "good-star");
+                                                anchor.append(star);
+                                        } else if (mentors[i].Rating === "2") {
+                                                var anchor = $("<a>");
+                                                title.append(anchor);
+                                                var star = $("<i>").addClass("fas fa-star");
+                                                star.attr("id", "good-star");
+                                                anchor.append(star);
+                                                var star2 = $("<i>").addClass("fas fa-star");
+                                                star2.attr("id", "good-star");
+                                                anchor.append(star2);
+                                        } else if (mentors[i].Rating === "3") {
+                                                var anchor = $("<a>");
+                                                title.append(anchor);
+                                                var star = $("<i>").addClass("fas fa-star");
+                                                star.attr("id", "good-star");
+                                                anchor.append(star);
+                                                var star2 = $("<i>").addClass("fas fa-star");
+                                                star2.attr("id", "good-star");
+                                                anchor.append(star2);
+                                                var star3 = $("<i>").addClass("fas fa-star");
+                                                star3.attr("id", "good-star");
+                                                anchor.append(star3);
+                                        } else if (mentors[i].Rating === "4") {
+                                                var anchor = $("<a>");
+                                                title.append(anchor);
+                                                var star = $("<i>").addClass("fas fa-star");
+                                                star.attr("id", "good-star");
+                                                anchor.append(star);
+                                                var star2 = $("<i>").addClass("fas fa-star");
+                                                star2.attr("id", "good-star");
+                                                anchor.append(star2);
+                                                var star3 = $("<i>").addClass("fas fa-star");
+                                                star3.attr("id", "good-star");
+                                                anchor.append(star3);
+                                                var star4 = $("<i>").addClass("fas fa-star");
+                                                star4.attr("id", "good-star");
+                                                anchor.append(star4);
+                                        } else if (mentors[i].Rating === "5") {
+                                                var anchor = $("<a>");
+                                                title.append(anchor);
+                                                var star = $("<i>").addClass("fas fa-star");
+                                                star.attr("id", "good-star");
+                                                anchor.append(star);
+                                                var star2 = $("<i>").addClass("fas fa-star");
+                                                star2.attr("id", "good-star");
+                                                anchor.append(star2);
+                                                var star3 = $("<i>").addClass("fas fa-star");
+                                                star3.attr("id", "good-star");
+                                                anchor.append(star3);
+                                                var star4 = $("<i>").addClass("fas fa-star");
+                                                star4.attr("id", "good-star");
+                                                anchor.append(star4);
+                                                var star5 = $("<i>").addClass("fas fa-star");
+                                                star5.attr("id", "good-star");
+                                                anchor.append(star5);
+                                        } else {
+                                                var anchor = $("<a>");
+                                                title.append(anchor);
+                                                var star = $("<i>").addClass("fas fa-star");
+                                                star.attr("id", "no-star");
+                                                anchor.append(star);
+                                                var star2 = $("<i>").addClass("fas fa-star");
+                                                star2.attr("id", "no-star");
+                                                anchor.append(star2);
+                                                var star3 = $("<i>").addClass("fas fa-star");
+                                                star3.attr("id", "no-star");
+                                                anchor.append(star3);
+                                                var star4 = $("<i>").addClass("fas fa-star");
+                                                star4.attr("id", "no-star");
+                                                anchor.append(star4);
+                                                var star5 = $("<i>").addClass("fas fa-star");
+                                                star5.attr("id", "no-star");
+                                                anchor.append(star5);
+                                        }
+                                        // description
+                                        var description = $("<p>").text(mentors[i].Description);
+                                        description.addClass("description");
+                                        colDes.append(description);
+                                        //Price
+                                        var price = $("<a>").text("$" + mentors[i].Price);
+                                        price.addClass("price");
+                                        colDes.append(price);
+                                }
+                        }); //ajax ends
+                };
+
+                $("#button-search").on("click", function () {
+                        console.log('Searching topic...');
+                        var topic = $("#search-topic").val().trim();
+                        console.log(topic);
+                        $("section").empty();
+                        var query = "/econsulows/api/getMentorias"
+                        $.ajax({
+                                url: query,
+                                method: "POST"
+                        }).then(function (res) {
+                                console.log(query);
+                                console.log(res);
+
+                                var mentors = res;
+                                console.log(mentors);
+
+                                // render element
+                                for (var i = 0; i < mentors.length; i++) {
+                                        if (topic === mentors[i].Title) {
+                                                console.log("success");
+                                                var figure = $("<figure>").addClass("mentors");
+                                                figure.attr("id", mentors[i].Id);
+                                                figure.attr("onClick", "mentoryId("+mentors[i].Id+");");
+                                                $("section").append(figure);
+                                                var div = $("<div>").addClass("row");
+                                                figure.append(div);
+                                                // image column
+                                                var colImg = $("<div>").addClass("col");
+                                                div.append(colImg);
+                                                // identification column
+                                                var colId = $("<div>").addClass("col");
+                                                div.append(colId);
+                                                // description column
+                                                var colDes = $("<div>").addClass("col");
+                                                div.append(colDes);
+                                                // add imag
+                                                if (mentors[i].URLImage === "") {
+                                                        var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" + "l_text:Montserrat_11_bold_center:" + mentors[i].Title + ",g_west,x_10" + "/smart_postal_header_color.png");
+                                                        img.attr("id", "profile-icon");
+                                                        colImg.append(img);
+                                                } else {
+                                                        var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" + mentors[i].URLImage);
+                                                        img.attr("id", "profile-icon");
+                                                        colImg.append(img);
+                                                }
+                                                // Mentor Title
+                                                var title = $("<p>").text(mentors[i].Title);
+                                                title.addClass("title");
+                                                colId.append(title);
+                                                // Mentor Name
+                                                var name = $("<p>").text(mentors[i].MentorName);
+                                                name.addClass("identification");
+                                                title.append(name);
+                                                // Mentor Rating
+                                                if (mentors[i].Rating === "1") {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "good-star");
+                                                        anchor.append(star);
+                                                } else if (mentors[i].Rating === "2") {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "good-star");
+                                                        anchor.append(star);
+                                                        var star2 = $("<i>").addClass("fas fa-star");
+                                                        star2.attr("id", "good-star");
+                                                        anchor.append(star2);
+                                                } else if (mentors[i].Rating === "3") {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "good-star");
+                                                        anchor.append(star);
+                                                        var star2 = $("<i>").addClass("fas fa-star");
+                                                        star2.attr("id", "good-star");
+                                                        anchor.append(star2);
+                                                        var star3 = $("<i>").addClass("fas fa-star");
+                                                        star3.attr("id", "good-star");
+                                                        anchor.append(star3);
+                                                } else if (mentors[i].Rating === "4") {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "good-star");
+                                                        anchor.append(star);
+                                                        var star2 = $("<i>").addClass("fas fa-star");
+                                                        star2.attr("id", "good-star");
+                                                        anchor.append(star2);
+                                                        var star3 = $("<i>").addClass("fas fa-star");
+                                                        star3.attr("id", "good-star");
+                                                        anchor.append(star3);
+                                                        var star4 = $("<i>").addClass("fas fa-star");
+                                                        star4.attr("id", "good-star");
+                                                        anchor.append(star4);
+                                                } else if (mentors[i].Rating === "5") {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "good-star");
+                                                        anchor.append(star);
+                                                        var star2 = $("<i>").addClass("fas fa-star");
+                                                        star2.attr("id", "good-star");
+                                                        anchor.append(star2);
+                                                        var star3 = $("<i>").addClass("fas fa-star");
+                                                        star3.attr("id", "good-star");
+                                                        anchor.append(star3);
+                                                        var star4 = $("<i>").addClass("fas fa-star");
+                                                        star4.attr("id", "good-star");
+                                                        anchor.append(star4);
+                                                        var star5 = $("<i>").addClass("fas fa-star");
+                                                        star5.attr("id", "good-star");
+                                                        anchor.append(star5);
+                                                } else {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "no-star");
+                                                        anchor.append(star);
+                                                        var star2 = $("<i>").addClass("fas fa-star");
+                                                        star2.attr("id", "no-star");
+                                                        anchor.append(star2);
+                                                        var star3 = $("<i>").addClass("fas fa-star");
+                                                        star3.attr("id", "no-star");
+                                                        anchor.append(star3);
+                                                        var star4 = $("<i>").addClass("fas fa-star");
+                                                        star4.attr("id", "no-star");
+                                                        anchor.append(star4);
+                                                        var star5 = $("<i>").addClass("fas fa-star");
+                                                        star5.attr("id", "no-star");
+                                                        anchor.append(star5);
+                                                }
+                                                // description
+                                                var description = $("<p>").text(mentors[i].Description);
+                                                description.addClass("description");
+                                                colDes.append(description);
+                                                //Price
+                                                var price = $("<a>").text("$" + mentors[i].Price);
+                                                price.addClass("price");
+                                                colDes.append(price);
+                                        }
+                                }
+                        }); //ajax ends      
+                });
+
+                function byQualification() {
+                        console.log("results filtered to 4+ star Mentors");
+                        $("section").empty();
+                        var query = "/econsulows/api/getMentorias"
+
+                        $.ajax({
+                                url: query,
+                                method: "POST"
+                        }).then(function (res) {
+                                var mentors = res;
+                                // render element
+                                for (var i = 0; i < mentors.length; i++) {
+                                        if (mentors[i].Rating !== "1" && mentors[i].Rating !== "2" && mentors[i].Rating !== "3") {
+                                                var figure = $("<figure>").addClass("mentors");
+                                                figure.attr("id", mentors[i].Id);
+                                                figure.attr("onClick", "mentoryId("+mentors[i].Id+");");
+                                                $("section").append(figure);
+                                                var div = $("<div>").addClass("row");
+                                                figure.append(div);
+                                                // image column
+                                                var colImg = $("<div>").addClass("col");
+                                                div.append(colImg);
+                                                // identification column
+                                                var colId = $("<div>").addClass("col");
+                                                div.append(colId);
+                                                // description column
+                                                var colDes = $("<div>").addClass("col");
+                                                div.append(colDes);
+                                                // add imag
+                                                if (mentors[i].URLImage === "") {
+                                                        var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" + "l_text:Montserrat_11_bold_center:" + mentors[i].Title + ",g_west,x_10" + "/smart_postal_header_color.png");
+                                                        img.attr("id", "profile-icon");
+                                                        colImg.append(img);
+                                                } else {
+                                                        var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" + mentors[i].URLImage);
+                                                        img.attr("id", "profile-icon");
+                                                        colImg.append(img);
+                                                }
+                                                // Mentor Title
+                                                var title = $("<p>").text(mentors[i].Title);
+                                                title.addClass("title");
+                                                colId.append(title);
+                                                // Mentor Name
+                                                var name = $("<p>").text(mentors[i].MentorName);
+                                                name.addClass("identification");
+                                                title.append(name);
+                                                // Mentor Rating
+                                                if (mentors[i].Rating === "4") {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "good-star");
+                                                        anchor.append(star);
+                                                        var star2 = $("<i>").addClass("fas fa-star");
+                                                        star2.attr("id", "good-star");
+                                                        anchor.append(star2);
+                                                        var star3 = $("<i>").addClass("fas fa-star");
+                                                        star3.attr("id", "good-star");
+                                                        anchor.append(star3);
+                                                        var star4 = $("<i>").addClass("fas fa-star");
+                                                        star4.attr("id", "good-star");
+                                                        anchor.append(star4);
+                                                } else {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "good-star");
+                                                        anchor.append(star);
+                                                        var star2 = $("<i>").addClass("fas fa-star");
+                                                        star2.attr("id", "good-star");
+                                                        anchor.append(star2);
+                                                        var star3 = $("<i>").addClass("fas fa-star");
+                                                        star3.attr("id", "good-star");
+                                                        anchor.append(star3);
+                                                        var star4 = $("<i>").addClass("fas fa-star");
+                                                        star4.attr("id", "good-star");
+                                                        anchor.append(star4);
+                                                        var star5 = $("<i>").addClass("fas fa-star");
+                                                        star5.attr("id", "good-star");
+                                                        anchor.append(star5);
+                                                }
+                                                // description
+                                                var description = $("<p>").text(mentors[i].Description);
+                                                description.addClass("description");
+                                                colDes.append(description);
+                                                //Price
+                                                var price = $("<a>").text("$" + mentors[i].Price);
+                                                price.addClass("price");
+                                                colDes.append(price);
+                                        }
+                                }
+                        }); //ajax ends
+                };
+
+                function byPrice() {
+                        console.log("results filtered by price below $500");
+                        $("section").empty();
+                        var query = "/econsulows/api/getMentorias"
+                        $.ajax({
+                                url: query,
+                                method: "POST"
+                        }).then(function (res) {
+                                console.log(query);
+                                console.log(res);
+
+                                var mentors = res;
+                                console.log(mentors);
+
+                                // render element
+                                for (var i = 0; i < mentors.length; i++) {
+                                        if (mentors[i].Price !== "500" && mentors[i].Price !== "1000") {
+                                                var figure = $("<figure>").addClass("mentors");
+                                                figure.attr("id", mentors[i].Id);
+                                                figure.attr("onClick", "mentoryId("+mentors[i].Id+");");
+                                                $("section").append(figure);
+                                                var div = $("<div>").addClass("row");
+                                                figure.append(div);
+                                                // image column
+                                                var colImg = $("<div>").addClass("col");
+                                                div.append(colImg);
+                                                // identification column
+                                                var colId = $("<div>").addClass("col");
+                                                div.append(colId);
+                                                // description column
+                                                var colDes = $("<div>").addClass("col");
+                                                div.append(colDes);
+                                                // add imag
+                                                if (mentors[i].URLImage === "") {
+                                                        var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" + "l_text:Montserrat_11_bold_center:" + mentors[i].Title + ",g_west,x_10" + "/smart_postal_header_color.png");
+                                                        img.attr("id", "profile-icon");
+                                                        colImg.append(img);
+                                                } else {
+                                                        var img = $("<img>").attr("src", "https://res.cloudinary.com/econsulo/image/upload/" + "c_fill,g_auto,h_95,w_73/" + mentors[i].URLImage);
+                                                        img.attr("id", "profile-icon");
+                                                        colImg.append(img);
+                                                }
+                                                // Mentor Title
+                                                var title = $("<p>").text(mentors[i].Title);
+                                                title.addClass("title");
+                                                colId.append(title);
+                                                // Mentor Name
+                                                var name = $("<p>").text(mentors[i].MentorName);
+                                                name.addClass("identification");
+                                                title.append(name);
+                                                // Mentor Rating
+                                                if (mentors[i].Rating === "1") {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "good-star");
+                                                        anchor.append(star);
+                                                } else if (mentors[i].Rating === "2") {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "good-star");
+                                                        anchor.append(star);
+                                                        var star2 = $("<i>").addClass("fas fa-star");
+                                                        star2.attr("id", "good-star");
+                                                        anchor.append(star2);
+                                                } else if (mentors[i].Rating === "3") {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "good-star");
+                                                        anchor.append(star);
+                                                        var star2 = $("<i>").addClass("fas fa-star");
+                                                        star2.attr("id", "good-star");
+                                                        anchor.append(star2);
+                                                        var star3 = $("<i>").addClass("fas fa-star");
+                                                        star3.attr("id", "good-star");
+                                                        anchor.append(star3);
+                                                } else if (mentors[i].Rating === "4") {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "good-star");
+                                                        anchor.append(star);
+                                                        var star2 = $("<i>").addClass("fas fa-star");
+                                                        star2.attr("id", "good-star");
+                                                        anchor.append(star2);
+                                                        var star3 = $("<i>").addClass("fas fa-star");
+                                                        star3.attr("id", "good-star");
+                                                        anchor.append(star3);
+                                                        var star4 = $("<i>").addClass("fas fa-star");
+                                                        star4.attr("id", "good-star");
+                                                        anchor.append(star4);
+                                                } else if (mentors[i].Rating === "5") {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "good-star");
+                                                        anchor.append(star);
+                                                        var star2 = $("<i>").addClass("fas fa-star");
+                                                        star2.attr("id", "good-star");
+                                                        anchor.append(star2);
+                                                        var star3 = $("<i>").addClass("fas fa-star");
+                                                        star3.attr("id", "good-star");
+                                                        anchor.append(star3);
+                                                        var star4 = $("<i>").addClass("fas fa-star");
+                                                        star4.attr("id", "good-star");
+                                                        anchor.append(star4);
+                                                        var star5 = $("<i>").addClass("fas fa-star");
+                                                        star5.attr("id", "good-star");
+                                                        anchor.append(star5);
+                                                } else {
+                                                        var anchor = $("<a>");
+                                                        title.append(anchor);
+                                                        var star = $("<i>").addClass("fas fa-star");
+                                                        star.attr("id", "no-star");
+                                                        anchor.append(star);
+                                                        var star2 = $("<i>").addClass("fas fa-star");
+                                                        star2.attr("id", "no-star");
+                                                        anchor.append(star2);
+                                                        var star3 = $("<i>").addClass("fas fa-star");
+                                                        star3.attr("id", "no-star");
+                                                        anchor.append(star3);
+                                                        var star4 = $("<i>").addClass("fas fa-star");
+                                                        star4.attr("id", "no-star");
+                                                        anchor.append(star4);
+                                                        var star5 = $("<i>").addClass("fas fa-star");
+                                                        star5.attr("id", "no-star");
+                                                        anchor.append(star5);
+                                                }
+                                                // description
+                                                var description = $("<p>").text(mentors[i].Description);
+                                                description.addClass("description");
+                                                colDes.append(description);
+                                                //Price
+                                                var price = $("<a>").text("$" + mentors[i].Price);
+                                                price.addClass("price");
+                                                colDes.append(price);
+                                        }
+                                }
+                        }); //ajax ends
+                };
+
+// Date Picker function
+var date_input = $('input[name="date"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        var options = {
+                format: 'mm/dd/yyyy',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+        };
+        date_input.datepicker(options);
+
+// Save Date
+function saveDate() {
+        var date = $("#date").val();
+        console.log(date);
+        var hour = $("options[value]").val();
+        console.log(hour);
+}
+
+// change card
+$("#acerca").on("click", function(e) {
+        $(".card-body").empty();
+        e.preventDefault();
+        // change card header
+        $("#acerca").attr("class", "nav-link active");
+        $("#temario").attr("class", "nav-link");
+        // load card body
+        var cardBody = $("<div>").attr("class", "card-body");
+        $("#card-holder").append(cardBody);
+        var header = $("<h5>").attr("class", "card-title");
+        header.text("Acerca del Mentor")
+        cardBody.append(header);
+        var description = $("<p>");
+        description.text("Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum");
+        cardBody.append(description);
+});
+
+$("#temario").on("click", function(e) {
+        location.reload();
+        // $(".card-body").empty();
+        // // change card header
+        // $("#acerca").attr("class", "nav-link");
+        // $("#temario").attr("class", "nav-link active");
+        // // load card body
+        // var cardBody = $("<div>").attr("class", "card-body");
+        // $("#card-holder").append(cardBody);
+        // var header = $("<h5>").attr("class", "card-title");
+        // header.text("Temas por ver en Mentoria")
+        // cardBody.append(header);
+        // var topicsList = $("<ul>");
+        // var listItem = $("<li>");
+        // listItem.text("Tema 1");
+        // cardBody.append(topicsList);
+});
         </script>
 </body>
+
 </html>

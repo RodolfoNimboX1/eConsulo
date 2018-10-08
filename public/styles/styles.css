@@ -51,7 +51,7 @@
     }
 
 /* HOME */
-    section {
+    .mentoring {
         overflow: scroll;
         display: block;
         width: 91%;
@@ -228,4 +228,56 @@
     #phone {
         background: #17a2b8;
     }
+
+    /* MENTOR PAGE */
+    .mentorAvatar {
+        position: relative;
+        left: 1%;
+        top: 10px;
+    }
+
+    .mentorPage {
+        display: block;
+        width: 100%;
+        height: 95%;
+        position: relative;
+        top: 15px;
+        overflow: scroll;
+    }
+    
+    .nombre-mentor {
+        color: gray;
+        text-decoration: underline;
+    }
+
+    .mentoring-description {
+        width: 320px;
+    }
+
+    #nice-star {
+        font-size: 15px;
+    }
+
+    #bad-star {
+        font-size: 15px;  
+    }
+
+    div.scrollmenu {
+        background-color: #333;
+        overflow: auto;
+        white-space: nowrap;
+    }
+    
+    div.scrollmenu option {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px;
+        text-decoration: none;
+    }
+    
+    div.scrollmenu option:hover {
+        background-color: #777;
+    }
+
 }

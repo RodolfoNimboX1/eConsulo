@@ -31,7 +31,6 @@
               
         <!--Jobs To Be Done-->
         <div class="container">
-
             <h1>Rodolfo Resines</h1>
             <img src="img/rodolfo.jpg" alt="Rodolfo, papú" class="profile-img">
 
@@ -50,14 +49,14 @@
                             <div class="input-group-prepend">
                               <button class="btn btn-outline-secondary" type="button" id="name">Name</button>
                             </div>
-                            <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <input type="text" class="form-control"  placeholder="" id="form-name" aria-label="Example text with button addon" aria-describedby="button-addon1">
                     </div>
 
                     <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <button class="btn btn-outline-secondary" type="button" id="phone">Phone</button>
                             </div>
-                            <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <input type="text" class="form-control"  placeholder="" id="form-phone" aria-label="Example text with button addon" aria-describedby="button-addon1">
                     </div>
 
                     <div class="input-group mb-3">
@@ -66,8 +65,8 @@
                             </div>
                             <select class="custom-select" id="inputGroupSelect01">
                               <option selected>Choose...</option>
-                              <option value="1">Mentor</option>
-                              <option value="2">Learner</option>
+                              <option value="1" id="Mentor">Mentor</option>
+                              <option value="2" id="Learner">Learner</option>
                             </select>
                     </div>
                     <button type="button" class="btn btn-info btn-lg btn-block">Save Information</button>
@@ -86,6 +85,18 @@
 
             $(".closebtn").on("click", function() {
                 $(".sideNav").css("width", "0")
+            });
+
+                        $(".btn").on("click", function() {
+                    console.log("saving user information...");
+                    console.log("------------------------------------------");
+
+                    var name = $("#form-name").val().trim();
+                    var phone = $("#form-phone").val().trim();
+                    var role = $("#inputGroupSelect01").val();
+                    console.log("Name: " + name);
+                    console.log("Phone: " + phone);
+                    console.log("Role: " + role);
             });
         </script>
 </body>
