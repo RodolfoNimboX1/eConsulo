@@ -209,6 +209,7 @@
                                 var dateInput = $("<div>").addClass("form-group");
                                 form.append(dateInput);
                                 var date = $("<input>").addClass("form-control");
+                                date.attr("onClick", "datePicker();");
                                 date.attr("id", "date");
                                 date.attr("name", "date");
                                 date.attr("placeholder", "MM/DD/YYY");
@@ -217,7 +218,7 @@
                                 var dateForm = $("<div>").addClass("form-group");
                                 form.append(dateForm);
                                 var scrollMenu = $("<div>").addClass("scrollmenu");
-                                scrollMenu.attr("onclick", "saveDate()");
+                                scrollMenu.attr("onClick", "saveDate()");
                                 scrollMenu.attr("data-toggle", "modal");
                                 scrollMenu.attr("data-target", "#myModal");
                                 dateForm.append(scrollMenu);
@@ -328,8 +329,9 @@
                                 var aboutLi = $("<li>").addClass("nav-item");
                                         var aboutText = $("<a>").addClass("nav-link");
                                                 aboutText.attr("href", "#");
-                                                aboutText.attr("id", "acrca");
+                                                aboutText.attr("id", "acerca");
                                                 aboutText.text("Acerca");
+                                                aboutText.attr("onClick", "acerca("+res[i].Id+");")
                                                 aboutLi.append(aboutText);
                                         navTabs.append(aboutLi);
                                 var cardBody = $("<div>").addClass("card-body");
@@ -337,7 +339,11 @@
                                 var cardTitle = $("<h5>").addClass("card-title");
                                         cardTitle.text("Temas por ver en " + res[i].Title);
                                         cardBody.append(cardTitle);
-                                        // missing list of Modules
+                                        // Modules
+                                var modules = $("<ul>");
+                                        cardBody.append(modules);
+                                var topics = $("<li>").text(res[i].Modules);
+                                        modules.append(topics);
                                 }
                         }
                         }); //ajax ends
@@ -868,59 +874,103 @@
                 };
 
 // Date Picker function
-var date_input = $('input[name="date"]'); //our date input has the name "date"
+function datePicker () {
+        console.log("click date");
+        var date_input = $('input[name="date"]'); //our date input has the name "date"
         var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-        var options = {
+        var date_options = {
                 format: 'mm/dd/yyyy',
                 container: container,
                 todayHighlight: true,
                 autoclose: true,
         };
-        date_input.datepicker(options);
-
-// Save Date
-function saveDate() {
-        var date = $("#date").val();
-        console.log(date);
-        var hour = $("options[value]").val();
-        console.log(hour);
+        date_input.datepicker(date_options);
 }
 
-// change card
-$("#acerca").on("click", function(e) {
-        $(".card-body").empty();
-        e.preventDefault();
-        // change card header
-        $("#acerca").attr("class", "nav-link active");
-        $("#temario").attr("class", "nav-link");
-        // load card body
-        var cardBody = $("<div>").attr("class", "card-body");
-        $("#card-holder").append(cardBody);
-        var header = $("<h5>").attr("class", "card-title");
-        header.text("Acerca del Mentor")
-        cardBody.append(header);
-        var description = $("<p>");
-        description.text("Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum");
-        cardBody.append(description);
-});
+// Save Date
+        function saveDate() {
+                var date = $("#date").val();
+                console.log(date);
+                var hour = $("options[value]").val();
+                console.log(hour);
+        };
 
-$("#temario").on("click", function(e) {
-        location.reload();
-        // $(".card-body").empty();
-        // // change card header
-        // $("#acerca").attr("class", "nav-link");
-        // $("#temario").attr("class", "nav-link active");
-        // // load card body
-        // var cardBody = $("<div>").attr("class", "card-body");
-        // $("#card-holder").append(cardBody);
-        // var header = $("<h5>").attr("class", "card-title");
-        // header.text("Temas por ver en Mentoria")
-        // cardBody.append(header);
-        // var topicsList = $("<ul>");
-        // var listItem = $("<li>");
-        // listItem.text("Tema 1");
-        // cardBody.append(topicsList);
-});
+// change card
+function acerca(Id) {
+        console.log(Id)
+        $(".card-body").empty();
+        var query = "/econsulows/api/getMentorias"
+        // logic to select id and load the speficic mentor page
+        console.log("recibi: " + Id);
+        $.ajax({
+                url: query,
+                data: "id="+Id,
+                method: "POST"
+        }).then(function (res) {
+                console.log(Id);
+                var acercaId = Id.toString();
+                console.log(acercaId);
+                console.log(res);
+
+                for (var i = 0; i<res.length; i++) {
+                        console.log(res[i].Id);
+                        if(res[i].Id === acercaId) {
+                                // change card header
+                                $("#acerca").attr("class", "nav-link active");
+                                $("#temario").attr("class", "nav-link");
+                                $("#temario").attr("onClick", "temario("+res[i].Id+");");
+                                // load card body
+                                var cardBody = $("<div>").attr("class", "card-body");
+                                $("#card-holder").append(cardBody);
+                                var header = $("<h5>").attr("class", "card-title");
+                                header.text("Acerca de " + res[i].MentorName);
+                                cardBody.append(header);
+                                var description = $("<p>");
+                                description.text(res[i].About);
+                                cardBody.append(description);
+                        }
+                }
+        });
+};
+
+function temario(Id) {
+        console.log(Id);
+        $(".card-body").empty();
+        var query = "/econsulows/api/getMentorias"
+        // logic to select id and load the speficic mentor page
+        console.log("recibi: " + Id);
+        $.ajax({
+                url: query,
+                data: "id="+Id,
+                method: "POST"
+        }).then(function (res) {
+                console.log(Id);
+                var acercaId = Id.toString();
+                console.log(acercaId);
+                console.log(res);
+
+                for (var i = 0; i<res.length; i++) {
+                        console.log(res[i].Id);
+                        if(res[i].Id === acercaId) {
+                                // change card header
+                                $("#acerca").attr("class", "nav-link");
+                                $("#temario").attr("class", "nav-link active");
+                                $("#acerca").attr("onClick", "acerca("+res[i].Id+");");
+                                // load card body
+                                var cardBody = $("<div>").addClass("card-body");
+                                        $("#card-holder").append(cardBody);
+                                var cardTitle = $("<h5>").addClass("card-title");
+                                        cardTitle.text("Temas por ver en " + res[i].Title);
+                                        cardBody.append(cardTitle);
+                                        // Modules
+                                var modules = $("<ul>");
+                                        cardBody.append(modules);
+                                var topics = $("<li>").text(res[i].Modules);
+                                        modules.append(topics);
+                        }
+                }
+        });
+};
         </script>
 </body>
 

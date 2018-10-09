@@ -13,11 +13,6 @@ app.get("/mentoring", function(req, response) {
     response.sendFile(path.join(__dirname, "../public/mentoring.html"));
 });
 
-// GET Route to /mentoring/mentor which display's the mentor page.
-app.get("/mentor", function(req, response) {
-    response.sendFile(path.join(__dirname, "../public/mentor.html"));
-});
-
 // GET Route to /categories which display's the categories page.
 app.get("/categories", function(req, response) {
     response.sendFile(path.join(__dirname, "../public/categories.html"));
